@@ -1,10 +1,12 @@
 const mysql = require('mysql');
+const util = require('util');
 
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   database: 'roomsPhotoGalleries',
 });
+
 
 connection.connect((err) => {
   if (err) {
@@ -20,18 +22,20 @@ const insertImagesUrls = (data, callback) => {
   // callback(data)
 };
 
-const getAllImagesUrls = (sendCallback) => {
-  connection.query('SELECT * FROM photos', (err, result) => {
-    if (err) console.log(err);
-    const dataArray =[]
-    result.map(obj => dataArray.push(Object.assign({}, obj)) );
-    sendCallback(dataArray);
-    return true;
-  });
+const getAllImagesUrlsByRoomId = async (roomId) => {
+  try {
+    const response = connection.query('SELECT * FROM photos WHERE id = ?', roomId);
+    const data = (await response).map(row => Object.assign({}, row));
+    return data;
+  } catch (err) {
+    throw err;
+  }
 };
 
 module.exports = {
   connection,
   insertImagesUrls,
-  getAllImagesUrls,
+  getAllImagesUrlsByRoomId,
 };
+
+getAllImagesUrlsByRoomId(1).then(console.log);
