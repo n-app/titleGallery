@@ -59,10 +59,10 @@ class TitleGallery extends React.Component {
 
   fetchPics(roomId) {
     fetchPics(roomId)
-      .then((pics) => {
+      .then((data) => {
         this.setState({
-          images: pics.images,
-          backgroundImage: pics.backgroundImage,
+          images: data.roomImageUrls,
+          backgroundImage: data.roomImageUrls[0].original,
         });
       });
   }

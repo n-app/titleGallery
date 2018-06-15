@@ -12,15 +12,13 @@ connection.connect((err) => {
   if (err) {
     console.log('Error connecting to the database-->', err);
     return;
-  } else {
-    console.log('Success entering your data!');
-  }  
+  }
+  console.log('Success entering your data!');
 });
 
 connection.query = util.promisify(connection.query);
 
 const insertImagesUrls = async (data) => {
-  console.log(data);
   try {
     await connection.query('INSERT INTO photos (roomImageUrls) VALUES ?', [data]);
     return Promise.resolve();
@@ -44,5 +42,3 @@ module.exports = {
   insertImagesUrls,
   getAllImagesUrlsByRoomId,
 };
-
-getAllImagesUrlsByRoomId(1).then(console.log);
