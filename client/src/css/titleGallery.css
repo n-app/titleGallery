@@ -1,9 +1,10 @@
 @import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
 .title-image {
-  height: 552px;
+  height: 368px;
   width: 100%;
   background-size: 100% 100%;
+  background-position: 50% 50%;
 }
 
 .image-modal {
@@ -136,4 +137,17 @@
 .title-gallery .image-gallery-thumbnails img {
   height: 68px;
   width: auto;
+}
+
+
+@media only screen and (min-width: 1128px) {
+  .title-image {
+    height: 552px;
+  }
+}
+
+@media only screen and (min-width: 744px) {
+  .title-image {
+    height: 442px;;
+  }
 }
