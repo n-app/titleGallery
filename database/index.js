@@ -15,14 +15,18 @@ connection.connect((err) => {
   }  
 });
 
-const insertImagesUrls = (data) => {
+const insertImagesUrls = (data, callback) => {
   connection.query('INSERT INTO photos (roomImageUrls) VALUES ?', [data]);
+  callback(data)
 };
 
 const getAllImagesUrls = (sendCallback) => {
   connection.query('SELECT * FROM photos', (err, result) => {
     if (err) console.log(err);
-    sendCallback(result);
+    const dataArray =[]
+    result.map(obj => dataArray.push(Object.assign({}, obj)) );
+    sendCallback(dataArray);
+    return true;
   });
 };
 
