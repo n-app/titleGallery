@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const http = require('http');
 const path = require('path');
-const titleGallery = require('./titleGallery');
+const headerPhotos = require('./headerPhotos');
 
 const app = express();
 
@@ -37,8 +37,8 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, '../public')));
 app.get('/favicon.ico', (req, res) => res.status(204));
 
-// handle /titlegallery routes
-app.use('/titlegallery', titleGallery);
+// handle /headerphotos routes
+app.use('/headerphotos', headerPhotos);
 
 // handle error
 app.use((req, res, next) => {
