@@ -29,7 +29,7 @@ const photoUrl = (obj) => {
   const keys = Object.keys(obj);
   keys.forEach((key) => {
     const homePhotos = [];
-    for (let i = 0; i < obj[key] + 1; i++) {           
+    for (let i = 0; i < obj[key] + 1; i++) {
       homePhotos.push(`https://s3-us-west-1.amazonaws.com/napbnb/${key}home${i}.jpg`);
     }
     const data = homePhotos.join('&-&-&');
