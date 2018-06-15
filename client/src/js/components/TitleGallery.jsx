@@ -1,6 +1,5 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-// import axios from 'axios';
 import ImageGallery from 'react-image-gallery';
 import axios from 'axios';
 import '../../css/titleGallery.css';
