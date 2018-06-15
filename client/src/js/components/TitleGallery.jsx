@@ -12,7 +12,7 @@ const fetchPics = async (roomId) => {
   const newRoomId = roomId >= 1020 ? 1019 : roomId;
   // *****************
 
-  const composedUrl = `${picUrl}${newRoomId}`;
+  const composedUrl = `${picUrl}/${newRoomId}`;
   try {
     const response = axios.get(composedUrl);
     return (await response).data;

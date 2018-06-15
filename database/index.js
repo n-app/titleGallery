@@ -17,7 +17,7 @@ connection.connect((err) => {
 
 const insertImagesUrls = (data, callback) => {
   connection.query('INSERT INTO photos (roomImageUrls) VALUES ?', [data]);
-  callback(data)
+  // callback(data)
 };
 
 const getAllImagesUrls = (sendCallback) => {
