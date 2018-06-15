@@ -1,6 +1,6 @@
 const db = require('./index.js');
 
-const partOneCount = { 
+const partOneCount = {
   1000: 8,
   1001: 6,
   1002: 6,
@@ -25,18 +25,17 @@ const partOneCount = {
 };
 
 const photoUrl = (obj) => {
-const allUrls = [];
-const keys = Object.keys(obj);
-keys.forEach ( (key) => {
-    let homePhotos = [];
+  const allUrls = [];
+  const keys = Object.keys(obj);
+  keys.forEach((key) => {
+    const homePhotos = [];
     for (let i = 0; i < obj[key] + 1; i++) {           
-        homePhotos.push(`https://s3-us-west-1.amazonaws.com/napbnb/${key}home${i}.jpg`);
+      homePhotos.push(`https://s3-us-west-1.amazonaws.com/napbnb/${key}home${i}.jpg`);
     }
-    homePhotos.join('&-&-&');
-    allUrls.push(homePhotos);
-});
-return allUrls;
+    const data = homePhotos.join('&-&-&');
+    allUrls.push([data]);
+  });
+  return allUrls;
 };
 
 db.insertImagesUrls(photoUrl(partOneCount));
-  
