@@ -1,2 +1,91 @@
 @import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
+.title-image {
+  height: 552px;
+  width: 100%;
+  background-size: 100% 100%;
+}
+
+.image-modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.image-modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  z-index: 500;
+}
+
+.close-image-button {
+  border: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 16px 28px 8px;
+  z-index: 1000;
+  font-size: 70px;
+  background: transparent;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.close-image-button::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "\00d7";
+  font-weight: 200;
+  color: white;
+  line-height: 80px;
+  text-align: center;
+}
+
+.gallery-frame {
+  position: relative;
+  display: box;
+  top: 80px;
+  height: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-gallery .image-gallery-slide {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.title-gallery .image-gallery-slide img {
+  height: 600px;
+  width: auto;
+}
+
+.title-gallery .image-gallery-left-nav,
+.title-gallery .image-gallery-right-nav {
+  padding: 250px 15px;
+  font-size: 3em;
+}
+
+.title-gallery .image-gallery-left-nav::before,
+.title-gallery .image-gallery-right-nav::before {
+  color: transparent;
+}
+
+.title-gallery .image-gallery-left-nav:hover::before,
+.title-gallery .image-gallery-right-nav:hover::before {
+  color: white;
+}
