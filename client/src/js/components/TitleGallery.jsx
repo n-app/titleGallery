@@ -75,6 +75,7 @@ class ConnectedTitleGallery extends React.Component {
               <div className="image-modal">
                 <div className="image-modal-overlay" />
                 <button
+                  type="text"
                   className="close-image-button"
                   onClick={this.props.toggleModal}
                   // onClick={() => { this.setState({ modalOn: false }); }}

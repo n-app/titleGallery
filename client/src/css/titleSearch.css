@@ -60,6 +60,22 @@
   width: 16px;
 }
 
+.title-search-input {
+  padding: 5px;
+  position: relative;
+  width: 100%;
+}
+
+.title-search-input input {
+  line-height: 22px;
+  font-size: 18px;
+  color:#484848;
+  position: relative;
+  width: 100%;
+  border: 0;
+  outline: none;
+}
+
 @media only screen and (max-width: 744px) {
   .title-search-bar {
     width: 100%;
