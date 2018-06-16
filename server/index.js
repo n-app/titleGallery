@@ -68,4 +68,3 @@ if (!module.parent) {
   server.listen(port);
   console.log(`tileGallery listening on ${port}`);
 }
-
