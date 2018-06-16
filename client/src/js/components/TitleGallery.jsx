@@ -48,9 +48,9 @@ class ConnectedTitleGallery extends React.Component {
   fetchPics(roomId) {
     fetchPics(roomId)
       .then((pics) => {
-        console.log('before add image');
-        this.props.addImages(pics.images);
-        this.props.setBackgroundImage(pics.backgroundImage);
+        console.log(pics);
+        this.props.addImages(pics.roomImageUrls);
+        this.props.setBackgroundImage(pics.roomImageUrls[0].original);
         // this.setState({
         //   images: pics.images,
         //   backgroundImage: pics.backgroundImage,
