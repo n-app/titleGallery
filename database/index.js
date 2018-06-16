@@ -13,7 +13,7 @@ connection.connect((err) => {
     console.log('Error connecting to the database-->', err);
     return;
   }
-  console.log('Success entering your data!');
+  console.log('Successfully connecting to mysql!');
 });
 
 connection.query = util.promisify(connection.query);

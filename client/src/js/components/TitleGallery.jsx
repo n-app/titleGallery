@@ -6,12 +6,13 @@ import { connect } from 'react-redux';
 import { addImages, toggleModal, setBackgroundImage } from '../redux/actions';
 import '../../css/titleGallery.css';
 
+if (!global._babelPolyfill) require('babel-polyfill');
+
 const picUrl = '/headerphotos';
 
 const fetchPics = async (roomId) => {
   // remove this later:
-  console.log('fetching');
-  const newRoomId = roomId >= 1020 ? 1019 : roomId;
+  const newRoomId = roomId >= 1020 ? Math.floor(Math.random() * 20) + 1000 : roomId;
   // *****************
 
   const composedUrl = `${picUrl}/${newRoomId}`;
@@ -48,13 +49,8 @@ class ConnectedTitleGallery extends React.Component {
   fetchPics(roomId) {
     fetchPics(roomId)
       .then((pics) => {
-        console.log(pics);
         this.props.addImages(pics.roomImageUrls);
         this.props.setBackgroundImage(pics.roomImageUrls[0].original);
-        // this.setState({
-        //   images: pics.images,
-        //   backgroundImage: pics.backgroundImage,
-        // });
       });
   }
 
