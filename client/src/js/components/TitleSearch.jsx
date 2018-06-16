@@ -17,6 +17,12 @@ const TitleSearch = () => (
         <span className="title-search-search-icon">
           {searchIconSvg}
         </span>
+        <div className="title-search-input">
+          <input
+            type="text"
+            placeholder="Anywhere"
+          />
+        </div>
       </button>
     </div>
   </div>
