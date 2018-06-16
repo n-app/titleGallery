@@ -2,13 +2,15 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import ImageGallery from 'react-image-gallery';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { addImages, toggleModal, setBackgroundImage } from '../redux/actions';
 import '../../css/titleGallery.css';
 
 const picUrl = '/headerphotos';
 
-
 const fetchPics = async (roomId) => {
   // remove this later:
+  console.log('fetching');
   const newRoomId = roomId >= 1020 ? 1019 : roomId;
   // *****************
 
@@ -21,49 +23,38 @@ const fetchPics = async (roomId) => {
   }
 };
 
-const galleryUrl = [
-  {
-    original: 'https://cdn.shopify.com/s/files/1/1422/8040/articles/living_720x720.jpeg?v=1487855775',
-    thumbnail: 'https://cdn.shopify.com/s/files/1/1422/8040/articles/living_720x720.jpeg?v=1487855775',
-  },
-  {
-    original: 'https://cdn.shopify.com/s/files/1/1422/8040/articles/living_720x720.jpeg?v=1487855775',
-    thumbnail: 'https://cdn.shopify.com/s/files/1/1422/8040/articles/living_720x720.jpeg?v=1487855775',
-  },
-  {
-    original: 'https://cdn.shopify.com/s/files/1/1422/8040/articles/living_720x720.jpeg?v=1487855775',
-    thumbnail: 'https://cdn.shopify.com/s/files/1/1422/8040/articles/living_720x720.jpeg?v=1487855775',
-  },
-];
+const mapStateToProps = (state) => {
+  return {
+    images: state.images,
+    modalOn: state.modalOn,
+    backgroundImage: state.backgroundImage,
+    roomId: state.roomId,
+  };
+};
 
-const backgroundImage = 'https://cdn.shopify.com/s/files/1/1422/8040/articles/living_720x720.jpeg?v=1487855775';
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addImages: images => dispatch(addImages(images)),
+    toggleModal: () => dispatch(toggleModal()),
+    setBackgroundImage: image => dispatch(setBackgroundImage(image)),
+  };
+};
 
-
-// redux props should have 'roomId', 'images', 'backgroundImage'
-class TitleGallery extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // change this later:
-      images: galleryUrl,
-      backgroundImage,
-      roomId: Math.floor(Math.random() * 100) + 1000,
-      // ******************
-      modalOn: false,
-    };
-  }
-
+class ConnectedTitleGallery extends React.Component {
   componentDidMount() {
-    this.fetchPics(this.state.roomId);
+    this.fetchPics(this.props.roomId);
   }
 
   fetchPics(roomId) {
     fetchPics(roomId)
       .then((pics) => {
-        this.setState({
-          images: pics.images,
-          backgroundImage: pics.backgroundImage,
-        });
+        console.log('before add image');
+        this.props.addImages(pics.images);
+        this.props.setBackgroundImage(pics.backgroundImage);
+        // this.setState({
+        //   images: pics.images,
+        //   backgroundImage: pics.backgroundImage,
+        // });
       });
   }
 
@@ -73,29 +64,31 @@ class TitleGallery extends React.Component {
         <div
           className="title-image"
           role="presentation"
-          style={{ backgroundImage: `url(${this.state.backgroundImage})` }}
-          onClick={() => { this.setState({ modalOn: true }); }}
+          style={{ backgroundImage: `url(${this.props.backgroundImage})` }}
+          // onClick={() => { this.setState({ modalOn: true }); }}
+          onClick={this.props.toggleModal}
           onKeyDown={() => {}}
         />
         {
-          this.state.modalOn
+          this.props.modalOn
             ? (
               <div className="image-modal">
                 <div className="image-modal-overlay" />
                 <button
                   className="close-image-button"
-                  onClick={() => { this.setState({ modalOn: false }); }}
+                  onClick={this.props.toggleModal}
+                  // onClick={() => { this.setState({ modalOn: false }); }}
                 />
                 <div className="gallery-frame">
                   <ImageGallery
-                    items={this.state.images}
+                    items={this.props.images}
                     showNav
                     showThumbnails
                     showFullscreenButton={false}
                     showPlayButton={false}
                     showIndex
                     additionalClass="modal-image-gallery"
-                  />`
+                  />
                 </div>
               </div>
             ) : null
@@ -104,5 +97,7 @@ class TitleGallery extends React.Component {
     );
   }
 }
+
+const TitleGallery = connect(mapStateToProps, mapDispatchToProps)(ConnectedTitleGallery);
 
 export default TitleGallery;
