@@ -60,6 +60,7 @@ app.use((error, req, res, next) => {
 
 // determine listening port
 const port = process.env.serverPort || 3005;
+
 const server = http.createServer(app);
 
 module.exports = server;
