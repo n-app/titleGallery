@@ -8,7 +8,13 @@ const connection = mysql.createConnection({
   port: process.env.RDS_PORT,
   database: process.env.RDS_DB_NAME,
 });
-
+// const connection = mysql.createConnection({
+//   host: 'roomsphotogalleries.cwp4aybwcnoo.us-west-1.rds.amazonaws.com',
+//   user: 'ryan_admin',
+//   password: 'Kiyoshi1!',
+//   port: '3306',
+//   database: 'roomsPhotoGalleries',
+// });
 
 connection.connect((err) => {
   if (err) {

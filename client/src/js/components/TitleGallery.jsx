@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { addImages, toggleModal, setBackgroundImage } from '../redux/actions';
 import '../../css/titleGallery.css';
 
-if (!global._babelPolyfill) require('babel-polyfill');
+// if (!global._babelPolyfill) require('babel-polyfill');
 
 const picUrl = '/headerphotos';
 

@@ -6,7 +6,7 @@ const srcFolder = path.join(__dirname, '/client/src/');
 
 module.exports = {
   entry: {
-    titleGallery: [path.join(srcFolder, '/js/index.jsx')],
+    titleGallery: ['babel-polyfill', path.join(srcFolder, '/js/index.jsx')],
   },
   resolve: { extensions: ['.js', '.jsx'] },
   output: {
