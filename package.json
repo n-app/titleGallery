@@ -4,10 +4,8 @@
   "description": "Title image carousel",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
     "react-dev": "webpack -d --watch",
-    "dev-server": "nodemon server/index.js",
-    "start": "node server/js"
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -59,9 +57,7 @@
     "eslint-plugin-react": "^7.4.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^23.1.0",
     "mini-css-extract-plugin": "^0.4.0",
-    "nodemon": "^1.17.5",
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.5"
   }
