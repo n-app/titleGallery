@@ -20,12 +20,12 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
     'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   );
   if (req.method === 'OPTIONS') {
     res.header(
       'Access-Control-Allow-Mehods',
-      'GET, POST, PUT, PATCH, DELETE',
+      'GET, POST, PUT, PATCH, DELETE'
     );
     return res.status(200).json({});
   }
@@ -59,7 +59,8 @@ app.use((error, req, res, next) => {
 /* eslint-enable no-unused-vars */
 
 // determine listening port
-const port = process.env.port || 3005;
+const port = process.env.serverPort || 3005;
+
 const server = http.createServer(app);
 
 module.exports = server;

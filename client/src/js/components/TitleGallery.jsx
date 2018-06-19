@@ -1,12 +1,12 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import ImageGallery from 'react-image-gallery';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { addImages, toggleModal, setBackgroundImage } from '../redux/actions';
 import '../../css/titleGallery.css';
 
-if (!global._babelPolyfill) require('babel-polyfill');
+// if (!global._babelPolyfill) require('babel-polyfill');
 
 const picUrl = '/headerphotos';
 
@@ -61,7 +61,6 @@ class ConnectedTitleGallery extends React.Component {
           className="title-image"
           role="presentation"
           style={{ backgroundImage: `url(${this.props.backgroundImage})` }}
-          // onClick={() => { this.setState({ modalOn: true }); }}
           onClick={this.props.toggleModal}
           onKeyDown={() => {}}
         />
@@ -74,7 +73,6 @@ class ConnectedTitleGallery extends React.Component {
                   type="text"
                   className="close-image-button"
                   onClick={this.props.toggleModal}
-                  // onClick={() => { this.setState({ modalOn: false }); }}
                 />
                 <div className="gallery-frame">
                   <ImageGallery
@@ -96,5 +94,15 @@ class ConnectedTitleGallery extends React.Component {
 }
 
 const TitleGallery = connect(mapStateToProps, mapDispatchToProps)(ConnectedTitleGallery);
+
+ConnectedTitleGallery.propTypes = {
+  roomId: PropTypes.number.isRequired,
+  addImages: PropTypes.func.isRequired,
+  setBackgroundImage: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
+  modalOn: PropTypes.bool.isRequired,
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default TitleGallery;
